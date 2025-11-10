@@ -1,13 +1,13 @@
+import axios from 'axios'
 import { Header } from "../components/Header"
 import { products } from "../../ecommerceio/data/products"
 export function HomePage() {
 
-    fetch('http://localhost:3000/api/products')
+    axios.get('http://localhost:3000/api/products')
         .then((response)=>{
-            response.json().then((data) =>{
-                console.log(data)
+           
+            console.log(response.data)
 
-            })
 
         })
     return (
@@ -21,7 +21,7 @@ export function HomePage() {
                 <div className="products-grid">
                     {products.map((product) => {
                         return (
-                            <div jey={product.id } className="product-container">
+                            <div key={product.id } className="product-container">
                                 <div className="product-image-container">
                                     <img className="product-image"
                                         src={product.image} />
